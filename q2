@@ -1,0 +1,120 @@
+abstract class GPA {
+    private String rollno;
+    private double[] marks;
+
+   
+    public GPA(String rollno, double[] marks) {
+        this.rollno = rollno;
+        this.marks = marks;
+    }
+
+    
+    public String getrollno() {
+        return rollno;
+    }
+
+   
+    public double[] getMarks() {
+        return marks;
+    }
+
+   
+    public abstract String calculateGrade();
+}
+
+
+class SGPA extends GPA {
+    private int semesterNumber;
+  
+
+    
+    public SGPA(String rollno, double[] marks, int semesterNumber) {
+        super(rollno, marks);
+        this.semesterNumber = semesterNumber;
+    }
+
+    
+    public int getSemesterNumber() {
+        return semesterNumber;
+    }
+
+   
+    @Override
+    public String calculateGrade() {
+        double totalMarks = 0;
+        for (double mark : getMarks()) {
+            totalMarks += mark;
+        }
+        double sgpa = totalMarks / getMarks().length;
+
+       
+        if (sgpa >= 9) {
+            return "A+";
+        } else if (sgpa >= 8) {
+            return "A";
+        } else if (sgpa >= 7) {
+            return "B";
+        } else if (sgpa >= 6) {
+            return "C";
+        } else {
+            return "D";
+        }
+    }
+}
+
+
+class CGPA extends GPA {
+    private int currentSemesterNumber;
+
+    
+    public CGPA(String rollno, double[] marks, int currentSemesterNumber) {
+        super(rollno, marks);
+        this.currentSemesterNumber = currentSemesterNumber;
+    }
+
+ 
+    public int getCurrentSemesterNumber() {
+        return currentSemesterNumber;
+    }
+
+
+    @Override
+    public String calculateGrade() {
+        double totalMarks = 0;
+        for (double mark : getMarks()) {
+            totalMarks += mark;
+        }
+        double cgpa = totalMarks / getMarks().length;
+
+       
+        if (cgpa >= 9) {
+            return "A+";
+        } else if (cgpa >= 8) {
+            return "A";
+        } else if (cgpa >= 7) {
+            return "B";
+        } else if (cgpa >= 6) {
+            return "C";
+        } else {
+            return "D";
+        }
+    }
+}
+
+
+public class Q2 {
+    public static void main(String[] args) {
+       
+        double[] sgpaMarks = {8.7, 8.9, 9.0, 9.5};
+        double[] cgpaMarks = {8.2, 9.9, 8.9, 9.0};
+
+ 
+        GPA student1 = new SGPA("S12345", sgpaMarks, 3); 
+        GPA student2 = new CGPA("C12345", cgpaMarks, 4); 
+
+        
+        System.out.println("Student 1  Grade: " + student1.calculateGrade());
+        System.out.println("Student 2 Grade: " + student2.calculateGrade());
+    }
+}
+

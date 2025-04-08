@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SkillXcel - Welcome</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .btn { padding: 10px 20px; text-decoration: none; font-weight: bold; color: white; background-color: #007bff; border-radius: 5px; }
+        .btn:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to SkillXcel</h1>
+    <p>Your platform to learn, test skills, and find jobs.</p>
+    
+    <a href="{% url 'accounts:signup' %}" class="btn">Sign Up</a>
+    <a href="{% url 'accounts:login' %}" class="btn">Login</a>
+
+</body>
+</html>
